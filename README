@@ -1,0 +1,19 @@
+This project will be a simple scraper that extracts the titles and links of articles from a blog or news site.
+
+1. Initial Setup
+First, project for the scraper:
+
+mkdir web_scraper
+cd web_scraper
+
+Explanations and Customizations
+HTTP Request: The scraper uses HTTParty to make a GET request to the specified URL.
+
+HTML Parsing with Nokogiri:
+
+Nokogiri::HTML(response.body) parses the HTML content returned by the request.
+The css('article') method selects the article elements from the page. You can change the CSS selector to match the specific structure of the site you want to scrape.
+Data Extraction:
+
+article.css('h2').text.strip: Extracts the text from the h2 element within each article, which is assumed to be the title.
+article.css('a').attribute('href')&.value: Extracts the href attribute from the link within the article.
